@@ -98,26 +98,37 @@ public class IntList {
         if (A == null)
             return B;
         IntList temp = new IntList(A.first, null);
-        IntList rest = temp.rest;
-        IntList Arest = A.rest;
-        while (Arest != null) {
-            rest = new IntList(Arest.first, Arest.rest);
-            rest = rest.rest;
-            Arest = Arest.rest;
+        if (A.rest == null) {
+            temp.rest = B;
+            return B;
+        } else {
+            temp.rest = new IntList(A.rest.first, null);
+            IntList Arest = A.rest.rest;
+            IntList rest = temp.rest;
+            while (Arest != null) {
+                rest.rest = new IntList(Arest.first, Arest.rest);
+                rest.rest =  rest.rest.rest;
+                Arest = Arest.rest;
+            }
+            rest.rest = B;
+            return temp;
         }
-        rest = B;
-        return temp;
     }
 
-    //public static void main(String[] args) {
-    //    IntList A = new IntList(5, new IntList());
-    //    IntList B = new IntList(10, new IntList());
-    //    IntList X = dcatenate(A, B);
-    //    System.out.println(X.first);
-    //    System.out.println(X.rest.first);
-    //    System.out.println(catenate(A, B).first);
-    //    System.out.println(catenate(A, B).rest);
-    //}
+    public static void main(String[] args) {
+        IntList A = new IntList(5, new IntList());
+        IntList B = new IntList(10, new IntList());
+        //IntList X = dcatenate(A, B);
+        //System.out.println(X.first);
+        //System.out.println(X.rest.first);
+        IntList Y = catenate(A, B);
+        System.out.println(Y.first);
+        System.out.println(Y.rest.first);
+        System.out.println(Y.rest.rest.first);
+        System.out.println(Y.rest.rest.rest.first);
+
+
+    }
 
 
 
