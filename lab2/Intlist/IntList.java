@@ -97,27 +97,20 @@ public class IntList {
     public static IntList catenate(IntList A, IntList B) {
         if (A == null)
             return B;
-        IntList temp = new IntList(A.first, null);
-        if (A.rest == null) {
-            temp.rest = B;
-            return B;
-        } else {
-            temp.rest = new IntList(A.rest.first, null);
-            IntList Arest = A.rest.rest;
-            IntList rest = temp.rest;
-            while (Arest != null) {
-                rest.rest = new IntList(Arest.first, Arest.rest);
-                rest.rest =  rest.rest.rest;
-                Arest = Arest.rest;
-            }
-            rest.rest = B;
-            return temp;
+        IntList temp = new IntList(A.first, A.rest);
+        IntList rest = temp;
+        while (A.rest != null) {
+            rest.rest = new IntList(A.rest.first, A.rest.rest);
+            A = A.rest;
+            rest = rest.rest;
         }
+        rest.rest = B;
+        return temp;
     }
 
     public static void main(String[] args) {
-        IntList A = new IntList(5, new IntList());
-        IntList B = new IntList(10, new IntList());
+        IntList A = new IntList(1, new IntList(2, new IntList(3,null)));
+        IntList B = new IntList(4, new IntList(5, null));
         //IntList X = dcatenate(A, B);
         //System.out.println(X.first);
         //System.out.println(X.rest.first);
@@ -126,6 +119,7 @@ public class IntList {
         System.out.println(Y.rest.first);
         System.out.println(Y.rest.rest.first);
         System.out.println(Y.rest.rest.rest.first);
+        System.out.println(Y.rest.rest.rest.rest.first);
 
 
     }
