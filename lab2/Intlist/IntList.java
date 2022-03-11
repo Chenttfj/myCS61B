@@ -99,13 +99,25 @@ public class IntList {
             return B;
         IntList temp = new IntList(A.first, null);
         IntList rest = temp.rest;
-        while (A.rest != null) {
-            rest = new IntList(A.rest.first, A.rest.rest);
+        IntList Arest = A.rest;
+        while (Arest != null) {
+            rest = new IntList(Arest.first, Arest.rest);
             rest = rest.rest;
+            Arest = Arest.rest;
         }
         rest = B;
         return temp;
     }
+
+    //public static void main(String[] args) {
+    //    IntList A = new IntList(5, new IntList());
+    //    IntList B = new IntList(10, new IntList());
+    //    IntList X = dcatenate(A, B);
+    //    System.out.println(X.first);
+    //    System.out.println(X.rest.first);
+    //    System.out.println(catenate(A, B).first);
+    //    System.out.println(catenate(A, B).rest);
+    //}
 
 
 
