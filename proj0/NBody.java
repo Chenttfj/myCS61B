@@ -22,7 +22,7 @@ public class NBody {
         return p;
     }
 
-    public static void drawBackground(double radius){
+    private static void drawBackground(double radius){
         StdDraw.setScale(-radius, radius);
         String imageToDraw = "images/starfield.jpg";
 
