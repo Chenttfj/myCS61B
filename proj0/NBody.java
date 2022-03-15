@@ -13,9 +13,9 @@ public class NBody {
 
     public static Planet[] readPlanets(String S){
         In in = new In(S);
-        in.readInt();
+        int N = in.readInt();
         in.readDouble();
-        Planet[] p = new Planet[5];
+        Planet[] p = new Planet[N];
         for (int i = 0; i < p.length; i++) {
             p[i] = new Planet(in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),in.readString());
         }
