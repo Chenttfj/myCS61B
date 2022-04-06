@@ -9,7 +9,16 @@ public class IntListTest {
      * method. The main point of this is to convince you that
      * assertEquals knows how to handle IntLists just fine.
      */
-
+    
+    public void testReverse() {
+        IntList A = IntList.of(6, 5, 4, 3, 2, 1);
+        IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
+        assertEquals(exp, IntList.reverse(A));
+        assertNotEquals(IntList.of(6, 5, 4, 3, 2, 1), A);
+        IntList B = null;
+        assertEquals(null, IntList.reverse(B));
+    }
+    
     @Test
     public void testList() {
         IntList one = new IntList(1, null);
@@ -40,7 +49,7 @@ public class IntListTest {
      * Anything can happen to A.
      */
 
-    @Test
+    @Test(timeout = 1000)
     public void testSquareListRecursive() {
         IntList L = IntList.of(1, 2, 3);
         IntList res = IntList.squareListRecursive(L);
