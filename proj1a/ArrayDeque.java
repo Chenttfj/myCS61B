@@ -12,25 +12,25 @@ public class ArrayDeque<T> {
     
     public void addFirst(T item) {
         itemNum++;
+        if (itemNum > size) {
+            resize(size * 2);
+        }
         arr[head] = item;
         head--;
         if (head == -1) {
             head = size - 1;
         }
-        if (itemNum > size) {
-            resize(size * 2);
-        }
     }
     
     public void addLast(T item) {
         itemNum++;
+        if (itemNum > size) {
+            resize(size * 2);
+        }
         arr[tail] = item;
         tail++;
         if (tail == size) {
             tail = 0;
-        }
-        if (itemNum > size) {
-            resize(size * 2);
         }
     }
     
@@ -49,6 +49,7 @@ public class ArrayDeque<T> {
         size = newSize;
         head = size - 1;
         tail = newIndex;
+        printDeque();
     }
     
     public void printDeque() {
@@ -121,5 +122,4 @@ public class ArrayDeque<T> {
             return arr[head + 1 + index];
         }
     }
-
 }
