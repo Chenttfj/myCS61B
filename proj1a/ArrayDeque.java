@@ -1,9 +1,9 @@
 public class ArrayDeque<T> {
-    public T[] arr;
-    public int size = 8;
-    public int head = size - 1;
-    public int tail = 0;
-    public int itemNum = 0;
+    private T[] arr;
+    private int size = 8;
+    private int head = size - 1;
+    private int tail = 0;
+    private int itemNum = 0;
     
     
     public ArrayDeque() {
@@ -34,7 +34,7 @@ public class ArrayDeque<T> {
         }
     }
     
-    public void resize(int newSize) {
+    private void resize(int newSize) {
         T[] temp = (T[]) new Object[newSize];
         int newIndex = 0;
         for (int oldIndex = head + 1; oldIndex < size && newIndex < newSize; oldIndex++) {
@@ -59,21 +59,18 @@ public class ArrayDeque<T> {
     
     public void printDeque() {
         System.out.println("=============");
-        for (int Index = head + 1; Index < size; Index++) {
-            System.out.println(arr[Index] + " ");
+        for (int index = head + 1; index < size; index++) {
+            System.out.println(arr[index] + " ");
         }
-        for (int Index = 0; Index < head + 1; Index++) {
-            System.out.println(arr[Index] + " ");
+        for (int index = 0; index < head + 1; index++) {
+            System.out.println(arr[index] + " ");
         }
         System.out.println("=============");
     }
     
     public boolean isEmpty() {
-        if (itemNum == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return itemNum == 0;
+
     }
     
     public int size() {
@@ -134,20 +131,20 @@ public class ArrayDeque<T> {
         }
     }
     
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ArrayDeque = new ArrayDeque<>();
-        ArrayDeque.addFirst(0);
-        ArrayDeque.removeFirst();
-        ArrayDeque.addFirst(2);
-        ArrayDeque.removeFirst();
-        
-        ArrayDeque.addFirst(4);
-        ArrayDeque.removeFirst();
-        ArrayDeque.addFirst(6);
-        ArrayDeque.isEmpty();
-        ArrayDeque.removeFirst();
-        ArrayDeque.isEmpty();
-        ArrayDeque.isEmpty();
-        ArrayDeque.addFirst(11);
-    }
+    //public static void main(String[] args) {
+    //    ArrayDeque<Integer> ArrayDeque = new ArrayDeque<>();
+    //    ArrayDeque.addFirst(0);
+    //    ArrayDeque.removeFirst();
+    //    ArrayDeque.addFirst(2);
+    //    ArrayDeque.removeFirst();
+    //
+    //    ArrayDeque.addFirst(4);
+    //    ArrayDeque.removeFirst();
+    //    ArrayDeque.addFirst(6);
+    //    ArrayDeque.isEmpty();
+    //    ArrayDeque.removeFirst();
+    //    ArrayDeque.isEmpty();
+    //    ArrayDeque.isEmpty();
+    //    ArrayDeque.addFirst(11);
+    //}
 }
