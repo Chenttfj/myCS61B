@@ -95,7 +95,7 @@ public class ArrayDeque<T> {
             arr[head + 1] = null;
             head++;
         }
-        if (itemNum <= size / 2) {
+        if (itemNum <= size / 2 && itemNum > 4) {
             resize(size / 2);
         }
         return temp;
@@ -116,7 +116,7 @@ public class ArrayDeque<T> {
             arr[tail - 1] = null;
             tail--;
         }
-        if (itemNum <= size / 2) {
+        if (itemNum <= size / 2 && itemNum > 4) {
             resize(size / 2);
         }
         return temp;
@@ -135,11 +135,19 @@ public class ArrayDeque<T> {
     }
     
     public static void main(String[] args) {
-        ArrayDeque<Integer> ArrayDeque = new ArrayDeque<Integer>();
+        ArrayDeque<Integer> ArrayDeque = new ArrayDeque<>();
         ArrayDeque.addFirst(0);
-        ArrayDeque.removeLast();
+        ArrayDeque.removeFirst();
         ArrayDeque.addFirst(2);
-        ArrayDeque.addFirst(3);
-       System.out.println(ArrayDeque.removeLast());
+        ArrayDeque.removeFirst();
+        
+        ArrayDeque.addFirst(4);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addFirst(6);
+        ArrayDeque.isEmpty();
+        ArrayDeque.removeFirst();
+        ArrayDeque.isEmpty();
+        ArrayDeque.isEmpty();
+        ArrayDeque.addFirst(11);
     }
 }
