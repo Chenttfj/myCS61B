@@ -76,7 +76,6 @@ public class ArrayDeque<T> {
     
     public T removeFirst() {
         T returnValue;
-        itemNum--;
         if (isEmpty()) {
             return null;
         }
@@ -89,12 +88,12 @@ public class ArrayDeque<T> {
             arr[head + 1] = null;
             head++;
         }
+        itemNum--;
         return (T)returnValue;
     }
     
     public T removeLast() {
         T returnValue;
-        itemNum--;
         if (isEmpty()) {
             return null;
         }
@@ -107,6 +106,7 @@ public class ArrayDeque<T> {
             arr[tail - 1] = null;
             head--;
         }
+        itemNum--;
         return (T)returnValue;
     }
     
@@ -120,8 +120,5 @@ public class ArrayDeque<T> {
         } else {
             return arr[head + 1 + index];
         }
-    }
-    
-    public static void main(String[] args) {
     }
 }
