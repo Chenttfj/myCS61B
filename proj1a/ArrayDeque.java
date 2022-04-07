@@ -37,11 +37,11 @@ public class ArrayDeque<T> {
     public void resize(int newSize) {
         T[] temp = (T[]) new Object[newSize];
         int newIndex = 0;
-        for (int oldIndex = head + 1; oldIndex < size || newIndex < newSize; oldIndex++) {
+        for (int oldIndex = head + 1; oldIndex < size && newIndex < newSize; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
-        for (int oldIndex = 0; oldIndex < head + 1 || newIndex < newSize; oldIndex++) {
+        for (int oldIndex = 0; oldIndex < head + 1 && newIndex < newSize; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
@@ -49,7 +49,6 @@ public class ArrayDeque<T> {
         size = newSize;
         head = size - 1;
         tail = newIndex;
-        printDeque();
     }
     
     public void printDeque() {
@@ -79,21 +78,21 @@ public class ArrayDeque<T> {
         if (isEmpty() == true) {
             return null;
         }
+        T temp;
         itemNum--;
+        if (head == size - 1) {
+            temp = arr[0];
+            arr[0] = null;
+            head = 0;
+        } else {
+            temp = arr[head + 1];
+            arr[head + 1] = null;
+            head++;
+        }
         if (itemNum <= size / 2) {
             resize(size / 2);
         }
-        if (head == size - 1) {
-            T temp = arr[0];
-            arr[0] = null;
-            head = 0;
-            return temp;
-        } else {
-            T temp = arr[head + 1];
-            arr[head + 1] = null;
-            head++;
-            return temp;
-        }
+        return temp;
     }
     
     public T removeLast() {
@@ -101,20 +100,20 @@ public class ArrayDeque<T> {
             return null;
         }
         itemNum--;
+        T temp;
+        if (tail == 0) {
+            temp = arr[size - 1];
+            arr[size - 1] = null;
+            tail = size - 1;
+        } else {
+            temp = arr[tail - 1];
+            arr[tail - 1] = null;
+            tail--;
+        }
         if (itemNum <= size / 2) {
             resize(size / 2);
         }
-        if (tail == 0) {
-            T temp = arr[size - 1];
-            arr[size - 1] = null;
-            tail = size - 1;
-            return temp;
-        } else {
-            T temp = arr[tail - 1];
-            arr[tail - 1] = null;
-            tail--;
-            return temp;
-        }
+        return temp;
     }
     
     public T get(int index) {
