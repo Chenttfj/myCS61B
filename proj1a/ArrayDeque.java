@@ -37,11 +37,11 @@ public class ArrayDeque<T> {
     public void resize(int newSize) {
         T[] temp = (T[]) new Object[newSize];
         int newIndex = 0;
-        for (int oldIndex = head + 1; oldIndex < size; oldIndex++) {
+        for (int oldIndex = head + 1; oldIndex < size || newIndex < newSize; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
-        for (int oldIndex = 0; oldIndex < head + 1; oldIndex++) {
+        for (int oldIndex = 0; oldIndex < head + 1 || newIndex < newSize; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
@@ -80,6 +80,9 @@ public class ArrayDeque<T> {
             return null;
         }
         itemNum--;
+        if (itemNum <= size / 2) {
+            resize(size / 2);
+        }
         if (head == size - 1) {
             T temp = arr[0];
             arr[0] = null;
@@ -98,6 +101,9 @@ public class ArrayDeque<T> {
             return null;
         }
         itemNum--;
+        if (itemNum <= size / 2) {
+            resize(size / 2);
+        }
         if (tail == 0) {
             T temp = arr[size - 1];
             arr[size - 1] = null;
