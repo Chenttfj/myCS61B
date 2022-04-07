@@ -37,11 +37,11 @@ public class ArrayDeque<T> {
     public void resize(int newSize) {
         T[] temp = (T[]) new Object[newSize];
         int newIndex = 0;
-        for (int oldIndex = head + 1; oldIndex < size && newIndex < newSize; oldIndex++) {
+        for (int oldIndex = head + 1; oldIndex < size && newIndex < newSize - 1; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
-        for (int oldIndex = 0; oldIndex < head + 1 && newIndex < newSize; oldIndex++) {
+        for (int oldIndex = 0; oldIndex < head + 1 && newIndex < newSize - 1; oldIndex++) {
             temp[newIndex] = arr[oldIndex];
             newIndex++;
         }
@@ -49,6 +49,8 @@ public class ArrayDeque<T> {
         size = newSize;
         head = size - 1;
         tail = newIndex;
+        System.out.println(tail);
+        //printDeque();
     }
     
     public void printDeque() {
@@ -127,4 +129,5 @@ public class ArrayDeque<T> {
             return arr[head + 1 + index];
         }
     }
+    
 }
