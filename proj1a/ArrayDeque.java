@@ -89,7 +89,7 @@ public class ArrayDeque<T> {
             arr[head + 1] = null;
             head++;
         }
-        return returnValue;
+        return (T)returnValue;
     }
     
     public T removeLast() {
@@ -107,14 +107,14 @@ public class ArrayDeque<T> {
             arr[tail - 1] = null;
             head--;
         }
-        return returnValue;
+        return (T)returnValue;
     }
     
     public T get(int index) {
         if (isEmpty() || index + 1 > itemNum) {
             return null;
         }
-        if (index > size - 1 - head) {
+        if (index >= size - 1 - head) {
             index = index - (size - 1 - head);
             return arr[index];
         } else {
@@ -123,22 +123,5 @@ public class ArrayDeque<T> {
     }
     
     public static void main(String[] args) {
-        ArrayDeque<Integer> arrayDeque1 = new ArrayDeque<Integer>();
-        System.out.println("size is " + arrayDeque1.size());
-        arrayDeque1.addFirst(2);
-        System.out.println("size is " + arrayDeque1.size());
-        arrayDeque1.addFirst(1);
-        arrayDeque1.addFirst(0);
-        arrayDeque1.addLast(3);
-        arrayDeque1.addLast(4);
-        arrayDeque1.addLast(5);
-        arrayDeque1.addLast(6);
-        arrayDeque1.addLast(7);
-        arrayDeque1.addLast(8);
-        arrayDeque1.removeFirst();
-        arrayDeque1.removeFirst();
-        //System.out.println("size is " + arrayDeque1.size());
-        arrayDeque1.printDeque();
-        System.out.println(arrayDeque1.get(5));
     }
 }
