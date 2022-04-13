@@ -15,7 +15,12 @@ public class TestPalindrome {
             actual += d.removeFirst();
         }
         assertEquals("persiflage", actual);
-
+        Deque d1 = palindrome.wordToDeque("");
+        actual = "";
+        for (int i = 0; i < "".length(); i++) {
+            actual += d1.removeFirst();
+        }
+        assertEquals("", actual);
     }
     
     @Test
@@ -25,11 +30,17 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("ca"));
         assertTrue(palindrome.isPalindrome("A"));
         assertTrue(palindrome.isPalindrome(null));
+        assertTrue(palindrome.isPalindrome(""));
         assertTrue(palindrome.isPalindrome("plkhelloollehklp"));
         assertTrue(palindrome.isPalindrome("plkhellollehklp"));
         assertFalse(palindrome.isPalindrome("plkhellollexklp"));
         assertFalse(palindrome.isPalindrome("plkhelloollexklp"));
         assertFalse(palindrome.isPalindrome("plkhelloollexklp", obo));
         assertTrue(palindrome.isPalindrome("flake", obo));
+        assertTrue(palindrome.isPalindrome("", obo));
+        assertTrue(palindrome.isPalindrome(null, obo));
+        assertTrue(palindrome.isPalindrome("a", obo));
+        assertTrue(palindrome.isPalindrome("abcb", obo));
+        assertFalse(palindrome.isPalindrome("abcbd", obo));
     }
 }
