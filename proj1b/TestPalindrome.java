@@ -36,10 +36,16 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("plkhelloollexklp"));
         assertTrue(palindrome.isPalindrome("t"));
         assertTrue(palindrome.isPalindrome("noon"));
+        assertTrue(palindrome.isPalindrome("AbA"));
+        assertFalse(palindrome.isPalindrome("abA"));
+        assertTrue(palindrome.isPalindrome("noon"));
+        assertFalse(palindrome.isPalindrome("horse"));
+        assertFalse(palindrome.isPalindrome("aaab"));
+        assertTrue(palindrome.isPalindrome(" "));
     }
     
     public void testIsPalindromecc() {
-        OffByOne obo = new OffByOne();
+        CharacterComparator obo = new OffByOne();
         assertFalse(palindrome.isPalindrome("plkhelloollexklp", obo));
         assertTrue(palindrome.isPalindrome("fdbflakeacg", obo));
         assertTrue(palindrome.isPalindrome("flake", obo));
