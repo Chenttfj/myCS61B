@@ -44,7 +44,8 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(" "));
     }
     
-    public void testIsPalindromecc() {
+    @Test
+    public void testOffByOne() {
         CharacterComparator obo = new OffByOne();
         assertFalse(palindrome.isPalindrome("plkhelloollexklp", obo));
         assertTrue(palindrome.isPalindrome("fdbflakeacg", obo));
@@ -68,4 +69,14 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("aa", obo));
         assertFalse(palindrome.isPalindrome("zxzx", obo));
     }
+    
+    //@Test
+    //public void testOffBy5() {
+    //    CharacterComparator cc = new OffByN(5);
+    //    assertTrue(palindrome.isPalindrome("", cc));
+    //    assertTrue(palindrome.isPalindrome("a", cc));
+    //    assertTrue(palindrome.isPalindrome("bing", cc));
+    //    assertFalse(palindrome.isPalindrome("aabaa", cc));
+    //    assertFalse(palindrome.isPalindrome("noon", cc));
+    //}
 }
