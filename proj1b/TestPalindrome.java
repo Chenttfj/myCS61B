@@ -34,16 +34,32 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("plkhellollehklp"));
         assertFalse(palindrome.isPalindrome("plkhellollexklp"));
         assertFalse(palindrome.isPalindrome("plkhelloollexklp"));
+        assertTrue(palindrome.isPalindrome("t"));
+        assertTrue(palindrome.isPalindrome("noon"));
     }
     
     public void testIsPalindromecc() {
         OffByOne obo = new OffByOne();
         assertFalse(palindrome.isPalindrome("plkhelloollexklp", obo));
+        assertTrue(palindrome.isPalindrome("fdbflakeacg", obo));
         assertTrue(palindrome.isPalindrome("flake", obo));
+        assertTrue(palindrome.isPalindrome("hi", obo));
+        assertTrue(palindrome.isPalindrome("hig", obo));
+        assertFalse(palindrome.isPalindrome("hiz", obo));
         assertTrue(palindrome.isPalindrome("", obo));
         assertTrue(palindrome.isPalindrome(null, obo));
         assertTrue(palindrome.isPalindrome("a", obo));
         assertTrue(palindrome.isPalindrome("abcb", obo));
         assertFalse(palindrome.isPalindrome("abcbd", obo));
+        assertTrue(palindrome.isPalindrome("", obo));
+        assertTrue(palindrome.isPalindrome("a", obo));
+        assertTrue(palindrome.isPalindrome("flake", obo));
+        assertTrue(palindrome.isPalindrome("zyzy", obo));
+        assertTrue(palindrome.isPalindrome("yyxz", obo));
+        assertTrue(palindrome.isPalindrome("yyyxz", obo));
+        assertFalse(palindrome.isPalindrome("aa", obo));
+        assertFalse(palindrome.isPalindrome("xyz", obo));
+        assertFalse(palindrome.isPalindrome("aa", obo));
+        assertFalse(palindrome.isPalindrome("zxzx", obo));
     }
 }
