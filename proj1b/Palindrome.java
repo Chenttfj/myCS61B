@@ -1,6 +1,6 @@
 public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
-        if (word == null) {
+        if (word == null || word.length() == 0) {
             return new LinkedListDeque<>();
         }
         int max = word.length();
