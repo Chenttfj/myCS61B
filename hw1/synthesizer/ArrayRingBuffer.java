@@ -93,10 +93,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         int position = first - 1;
         @Override
         public boolean hasNext() {
-            if (isEmpty() || count > fillCount) {
+            if (isEmpty() || count >= fillCount) {
                 return false;
             }
-            count++;
             position++;
             if (position == capacity) {
                 position = 0;
@@ -106,6 +105,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     
         @Override
         public T next() {
+            count++;
             return rb[position];
         }
     }

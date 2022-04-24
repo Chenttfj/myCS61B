@@ -29,11 +29,12 @@ public class GuitarString {
         int capacity = (int) Math.round(SR / frequency);
         buffer = new ArrayRingBuffer(capacity);
         for (int i = 0; i < buffer.capacity(); i++) {
-            buffer.enqueue(0.0);
+            buffer.enqueue((double) i);
         }
         for (Double aDouble : buffer) {
-            System.out.println(aDouble);
+            System.out.print(aDouble + " ");
         }
+        System.out.println();
     }
     
     
